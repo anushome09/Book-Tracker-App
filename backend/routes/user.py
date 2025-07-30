@@ -12,5 +12,7 @@ def register_user(user: UserCreate):
     try:
         user_id = create_new_user(user)
         return {"message": "User created successfully", "user_id": user_id}
+    except ValueError as ve:
+        raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
