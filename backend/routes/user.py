@@ -4,10 +4,10 @@ from backend.crud.users import create_new_user
 from backend.schemas.user import UserCreate
 
 
-route = APIRouter()
+router = APIRouter()
 
 # function (api) to register user
-@route.post("/", status_code=201)
+@router.post("/", status_code=201)
 def register_user(user: UserCreate):
     try:
         user_id = create_new_user(user)
