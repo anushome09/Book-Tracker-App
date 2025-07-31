@@ -2,7 +2,25 @@ from backend.database import get_connection
 from backend.schemas.user import UserCreate
 from backend.utils.security import hash_password
 
-# function to get user using email ID
+# function to get user for Sign In
+def get_user_by_email(email: str):
+    
+    # Getting the database connection
+    db_connection = get_connection()
+    cursor = db_connection.cursor(dictionary=True)
+    
+    # Executing the search query
+    query = """
+                SELECT * FROM users
+                WHERE email = %s
+            """
+    cursor.execute(query, (email,))
+    user = cursor.fetchone()
+    
+    db_connection.close()
+    return user
+
+# function to get user using email ID or user name
 def get_user_by_email_or_username(email: str, username: str):
     
     # Getting the database connection
