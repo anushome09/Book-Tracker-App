@@ -1,1 +1,23 @@
 .env
+
+
+# dependencies
+node_modules/
+
+# production build
+dist/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# Vite cache
+.vite/
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
